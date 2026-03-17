@@ -1,0 +1,35 @@
+services:
+  # 数据库
+  postgres:
+    image: postgres:16-alpine
+    container_name: pet-postgres
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # 对象存储
+  minio:
+    image: minio/minio
+    container_name: pet-minio
+    env_file: .env
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+
+  # 缓存
+  redis:
+    image: redis:7-alpine
+    container_name: pet-redis
+    volumes:
+      - redis_data:/data
+
+# 统一管理命名卷
+volumes:
+  pg_data:
+  minio_data:
+  redis_data:

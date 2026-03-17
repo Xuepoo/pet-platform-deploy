@@ -1,0 +1,13 @@
+.# Sensitive Information
+.env
+*.key
+*.pem
+
+# Local data (If you use bind mounts instead of named volumes)
+# data/
+# pgdata/
+# minio_data/
+
+# OS specific
+.DS_Storeenv
+
