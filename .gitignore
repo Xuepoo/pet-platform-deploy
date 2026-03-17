@@ -11,3 +11,8 @@
 # OS specific
 .DS_Storeenv
 
+# data
+minio_data
+pg_data
+redis_data
+
